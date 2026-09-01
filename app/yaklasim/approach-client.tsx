@@ -46,31 +46,24 @@ export function ApproachClient({ content: c }: { content: SiteContent }) {
             <div className="h-px flex-1 bg-white/10" />
           </div>
 
-          <p
-            data-reveal
-            className="text-sm text-fg-muted leading-relaxed font-light max-w-2xl mb-14"
-          >
-            {c.approach.intro}
-          </p>
-
-          <div data-reveal className="grid gap-6 sm:grid-cols-2">
-            {c.approach.principles.map((p, i) => (
+          <div data-reveal className="grid gap-6 sm:grid-cols-3">
+            {c.approach.methods.map((m, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -5 }}
                 className="bg-white/[0.02] border border-white/10 hover:border-primary/45 rounded-xl p-8 space-y-5 backdrop-blur-sm shadow-xl ring-1 ring-inset ring-white/[0.04] transition-[border-color] duration-300"
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-2xl font-extrabold text-primary">
-                    {String(i + 1).padStart(2, "0")}
+                  <p className="text-4xl font-extrabold text-primary">
+                    {m.title}
                   </p>
                   <Zap className="h-5 w-5 text-accent/60" />
                 </div>
-                <p className="text-sm font-extrabold uppercase tracking-wider text-fg">
-                  {p.title}
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-fg-muted">
+                  {m.full}
                 </p>
                 <p className="text-xs text-fg-muted leading-relaxed font-light">
-                  {p.desc}
+                  {m.desc}
                 </p>
               </motion.div>
             ))}

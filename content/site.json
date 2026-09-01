@@ -1,161 +1,151 @@
 {
   "site": {
     "name": "Ad Soyad",
-    "title": "Unvan",
-    "email": "iletisim@siteniz.com",
-    "address": "Sehir, Turkiye",
-    "copyright": "Tum haklari saklidir."
+    "title": "Klinik Psikolog",
+    "email": "iletisim@klinik.com",
+    "phone": "+90 212 XXX XX XX",
+    "address": "Levent Plaza, Kat: 8\nBeşiktaş, İstanbul",
+    "copyright": "Tüm hakları saklıdır."
   },
   "home": {
-    "badge": "AUTHORITY",
-    "headline": "Yapılandırılmış, kanıta dayalı",
-    "headlineAccent": "psikolojik danışmanlık",
-    "headlineSuffix": "hizmeti.",
-    "description": "Kurumsal psikoloji, travma sonrası destek ve dayanıklılık programları alanında uzmanlaşmış, yapılandırılmış terapi süreçlerini yönetiyorum.",
-    "cta": "İletişime Geçin",
+    "badge": "BİLİMSEL & KANITA DAYALI KLİNİK METOTLAR",
+    "headline": "Kanıta Dayalı",
+    "headlineAccent": "Klinik Yaklaşım",
+    "headlineSuffix": "",
+    "description": "Uluslararası standartlarda yapılandırılmış CBT (Bilişsel Davranışçı Terapi), EMDR ve Şema Terapi protokolleriyle ölçülebilir ve bilimsel ruh sağlığı çözümleri.",
+    "cta": "İletişim & Randevu",
+    "ctaSecondary": "Yayınlar",
     "credentials": [
-      {
-        "label": "Uzmanlık Alanı",
-        "value": "Kurumsal Psikoloji"
-      },
-      {
-        "label": "Yaklaşım",
-        "value": "Kanıta Dayalı"
-      },
-      {
-        "label": "Format",
-        "value": "Yüzyüze / Çevrimiçi"
-      }
+      { "label": "TPD ÜYELİĞİ", "value": "" },
+      { "label": "KDTD AKREDİTASYONU", "value": "" },
+      { "label": "EMDR EUROPE ONAYI", "value": "" },
+      { "label": "ISST SERTİFİKASI", "value": "" }
     ]
   },
+  "metrics": [
+    { "val": "12+", "unit": "Yıl", "label": "Klinik Deneyim" },
+    { "val": "4500+", "unit": "", "label": "Tamamlanmış Seans" },
+    { "val": "8", "unit": "+", "label": "Akademik Yayın" },
+    { "val": "%100", "unit": "", "label": "Etik Taahhüt" }
+  ],
   "services": [
     {
-      "title": "Kurumsal Psikolojik Danışmanlık",
-      "desc": "Kurumlara yönelik çalışanların ruh sağlığı, tükenmişlik önleme ve psikososyal risk değerlendirmesi hizmetleri.",
-      "duration": "60 dk",
-      "method": "Yüzyüze / Çevrimiçi"
-    },
-    {
-      "title": "Travma Sonrası Destek",
-      "desc": "İş kazası, organizasyonel kriz veya bireysel travmatik deneyimler sonrası yapılandırılmış psikolojik destek süreci.",
-      "duration": "50 dk",
-      "method": "Yüzyüze / Çevrimiçi"
-    },
-    {
-      "title": "Dayanıklılık Programları",
-      "desc": "Bireylerin ve ekiplerin stres yönetimi, duygusal dayanıklılık ve adaptasyon kapasitesini güçlendiren yapılandırılmış programlar.",
-      "duration": "90 dk",
-      "method": "Yüzyüze"
-    },
-    {
       "title": "Bireysel Psikoterapi",
-      "desc": "Kaygı, depresyon, tükenmişlik ve ilişkisel zorluklarda bilimsel temelli birebir terapi süreci.",
+      "desc": "Stres, kaygı, depresyon, yaşam değişimleri ve anlam arayışında bireysel farkındalık yolculuğu.",
       "duration": "50 dk",
-      "method": "Yüzyüze / Çevrimiçi"
+      "method": "CBT / Şema Terapi"
+    },
+    {
+      "title": "Çift & İlişki Terapisi",
+      "desc": "İlişki içi çatışmalar, iletişim problemleri ve bağlılık krizleri üzerine çiftler arası iyileşme.",
+      "duration": "75 dk",
+      "method": "Gottman / Sistemik"
+    },
+    {
+      "title": "EMDR Travma Terapisi",
+      "desc": "Zorlayıcı geçmiş deneyimlerin nörolojik düzeyde duyarsızlaştırılıp yeniden işlenmesi.",
+      "duration": "60 dk",
+      "method": "EMDR Protokolü"
     }
   ],
   "about": {
-    "title": "Hakkımda",
-    "intro": "Kurumsal psikoloji ve travma sonrası destek alanlarında çalışıyorum. Danışanlarıma yapılandırılmış, kanıta dayalı terapötik süreçlerle eşlik ediyorum. Çalışmalarımda bilimsel literatür ve güncel araştırma bulgularını temel alıyorum.",
+    "title": "Klinik & Akademik Profil",
+    "intro": "İstanbul Üniversitesi Psikoloji Bölümü'nden birincilik derecesiyle mezun oldu. Doktora derecesini tamamlayarak kaygı bozuklukları ve travma üzerine uluslararası klinik araştırmalarda yer aldı.\n\nUyguladığı terapiler tamamen kanıta dayalı bilimsel protokollere dayanmaktadır. Klinik çalışmalarının yanı sıra üniversitede dersler vermekte ve araştırmalar yönetmektedir.",
+    "calloutTitle": "Uygulanan Yaklaşımlar",
+    "calloutText": "Tüm psikolojik değerlendirmeler ve klinik seanslar, Amerikan Psikoloji Birliği (APA) ve Türk Psikologlar Derneği (TPD) etik standartlarına uygun olarak yürütülür.",
     "credentials": [
       {
-        "year": "-",
-        "title": "Lisans Eğitimi",
-        "detail": "Psikoloji alanında lisans derecesi"
+        "year": "2014",
+        "title": "İstanbul Üniversitesi - Psikoloji Lisans",
+        "detail": "Birincilik derecesiyle mezuniyet"
       },
       {
-        "year": "-",
-        "title": "Yüksek Lisans",
-        "detail": "Klinik psikoloji alanında uzmanlık"
+        "year": "2016",
+        "title": "Klinik Psikoloji Yüksek Lisansı",
+        "detail": "Kaygı bozuklukları tez çalışması"
       },
       {
-        "year": "-",
-        "title": "Kurumsal Danışmanlık Deneyimi",
-        "detail": "Çeşitli kurumlarda çalışan ruh sağlığı ve organizasyonel iyilik programları"
-      },
-      {
-        "year": "-",
-        "title": "Sürdürülen Eğitim",
-        "detail": "Travma odaklı terapiler ve dayanıklılık müdahaleleri alanında sürekli mesleki gelişim"
+        "year": "2018",
+        "title": "EMDR Avrupa Akredite Uygulayıcı",
+        "detail": "EMDR Europe onaylı sertifika"
       }
+    ],
+    "organizations": [
+      "Türk Psikologlar Derneği",
+      "Kognitif ve Davranış Terapileri Derneği",
+      "EMDR Türkiye Derneği"
     ]
   },
   "approach": {
-    "title": "Çalışma Yaklaşımım",
-    "intro": "Terapi sürecimi bilimsel kanıt, yapılandırılmış metodoloji ve ölçülebilir hedefler üzerine kuruyorum. Her danışan için bireyselleştirilmiş bir yol haritası oluşturuyorum.",
-    "principles": [
+    "title": "Klinik Metotlar & Bilimsel Çerçeve",
+    "intro": "",
+    "methods": [
       {
-        "title": "Kanıta Dayalı Yöntemler",
-        "desc": "Bilimsel araştırmalarla etkililiği kanıtlanmış terapi yaklaşımlarını temel alıyorum. Her müdahale, güncel literatür ve klinik kılavuzlarla desteklenir."
+        "title": "CBT",
+        "full": "Bilişsel Davranışçı Terapi",
+        "desc": "Düşünce-duygu-davranış zincirini kırarak kanıt temelli bilişsel yeniden yapılandırma."
       },
       {
-        "title": "Yapılandırılmış Süreç",
-        "desc": "Net hedefler, ölçülebilir ilerleme kriterleri ve düzenli değerlendirmelerle şeffaf bir terapi süreci yönetiyorum."
+        "title": "EMDR",
+        "full": "Göz Hareketleriyle Duyarsızlaştırma",
+        "desc": "Sistematik göz hareketleriyle travmatik anıların nörobiyolojik düzeyde çözümlenmesi."
       },
       {
-        "title": "Bütünsel Değerlendirme",
-        "desc": "Bireyin iş yaşamı, ilişkileri ve kişisel tarihini bir bütün olarak ele alıyorum. Belirtiyi değil, sistemi anlama esasına dayanır."
-      },
-      {
-        "title": "Etik ve Gizlilik",
-        "desc": "Tüm çalışmalarım meslek etiği ve yasal çerçevede yürütülür. Danışan bilgileri kesinlikle gizli tutulur."
+        "title": "ŞEMA",
+        "full": "Şema Terapi Modelleri",
+        "desc": "Erken çocukluk dönemi uyumsuz kalıpların ve temel şemaların tespiti ve dönüşümü."
       }
-    ]
+    ],
+    "principles": []
   },
   "articles": [
     {
-      "title": "İş Yerinde Ruh Sağlığı: Kurumsal Sorumluluk ve Bireysel Farkındalık",
-      "category": "Kurumsal",
-      "readTime": "9 dk",
-      "date": ""
-    },
-    {
-      "title": "Travma Sonrası Büyüme: Zorluktan Güce Geçiş Süreci",
-      "category": "Travma",
-      "readTime": "11 dk",
-      "date": ""
-    },
-    {
-      "title": "Organizasyonel Dayanıklılık: Ekipleri Krize Hazırlamak",
-      "category": "Dayanıklılık",
+      "title": "Kaygı Bozukluklarında Bilişsel Yeniden Yapılandırma",
+      "category": "Klinik",
       "readTime": "8 dk",
-      "date": ""
+      "date": "28 Mayıs 2026"
     },
     {
-      "title": "Tükenmişlik Sendromu: Erken Belirtiler ve Müdahale Stratejileri",
-      "category": "Tükenmişlik",
-      "readTime": "7 dk",
-      "date": ""
+      "title": "Çocuklarda Duygusal Güvenlik Alanı Oluşturmak",
+      "category": "Çocuk-Ergen",
+      "readTime": "6 dk",
+      "date": "24 Temmuz 2026"
+    },
+    {
+      "title": "EMDR ile Travma Sonrası Büyüme",
+      "category": "Travma",
+      "readTime": "10 dk",
+      "date": "10 Nisan 2026"
     }
   ],
   "faq": [
     {
-      "q": "Kurumsal danışmanlık süreci nasıl işliyor?",
-      "a": "Öncelikle kurumun ihtiyaçlarını belirlemek için bir ön değerlendirme görüşmesi yapılır. Ardından hedefe yönelik yapılandırılmış bir program tasarlanır."
+      "q": "İlk terapi seansında ne yapılıyor?",
+      "a": "İlk seans, birbirimizi tanıdığımız, başvuru nedenlerinizi ve hedeflerinizi değerlendirdiğimiz bir ön değerlendirme seansıdır."
     },
     {
-      "q": "Bireysel terapi ile kurumsal danışmanlık arasındaki fark nedir?",
-      "a": "Bireysel terapide odak bireyin iç dünyası ve kişisel hedefleridir. Kurumsal danışmanlıkta ise çalışan iyiliği, ekip dinamikleri ve organizasyonel süreçler ele alınır."
+      "q": "Terapi seansları ne sıklıkla yapılmalı?",
+      "a": "Başlangıçta haftada bir görüşme önerilir. Süreç ilerledikçe sıklık azaltılabilir."
     },
     {
-      "q": "Travma sonrası destek ne zaman başvurulmalı?",
-      "a": "Travmatik bir deneyimin ardından uyku bozuklukları, aşırı uyarılmışlık veya kaçma davranışları gibi belirtiler yaşanıyorsa profesyonel destek önemlidir."
-    },
-    {
-      "q": "Seans ücreti ne kadar?",
-      "a": "Seans bilgisi için iletişime geçin."
-    },
-    {
-      "q": "Çevrimiçi seanslar yüzyüze seanslar kadar etkili mi?",
-      "a": "Araştırmalar, birçok terapi yaklaşımında çevrimiçi seansların yüzyüze seanslarla benzer etkililik gösterdiğini ortaya koymaktadır."
+      "q": "Seansların gizliliği nasıl korunur?",
+      "a": "Tüm seanslarımız yasal ve etik sınırlar çerçevesinde %100 gizlilik ilkesine dayanır."
     }
   ],
   "contact": {
-    "title": "İletişim",
-    "intro": "Kurumsal danışmanlık, bireysel terapi veya dayanıklılık programları hakkında bilgi almak için iletişime geçebilirsiniz.",
-    "formName": "Adınız",
+    "title": "Klinik İletişim",
+    "intro": "Seans planlamaları ve klinik sorularınız için iletişime geçebilirsiniz.",
+    "clinicAddress": "Levent Plaza, Kat: 8\nBeşiktaş, İstanbul",
+    "workingHours": {
+      "weekdays": "Pzt - Cum: 09:00 - 18:00",
+      "saturday": "Cmt: 10:00 - 15:00",
+      "sunday": "Pazar: Kapalı"
+    },
+    "formTitle": "Resmi Seans Talep Formu",
+    "formName": "Ad ve Soyad",
     "formEmail": "E-posta",
-    "formMessage": "Mesajınız",
-    "formSubmit": "Gönder"
+    "formReason": "Başvuru Nedeni",
+    "formMessage": "Ek notlar...",
+    "formSubmit": "Seans Talebini İlet"
   }
 }

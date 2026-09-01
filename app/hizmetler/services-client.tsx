@@ -54,13 +54,13 @@ export function ServicesClient({ content: c }: { content: SiteContent }) {
                 #
               </div>
               <div className="col-span-3 p-5 border-r border-white/10">
-                Terapi Turu
+                Terapi Türü
               </div>
               <div className="col-span-5 p-5 border-r border-white/10">
-                Protokol & Aciklama
+                Protokol & Açıklama
               </div>
               <div className="col-span-2 p-5 border-r border-white/10 text-center">
-                Sure
+                Süre
               </div>
               <div className="col-span-1 p-5 text-center">Metot</div>
             </div>

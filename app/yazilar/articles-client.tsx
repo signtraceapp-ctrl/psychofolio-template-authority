@@ -39,7 +39,7 @@ export function ArticlesClient({ content: c }: { content: SiteContent }) {
         <div className="mx-auto max-w-5xl">
           <div className="flex items-center gap-4 mb-12">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-fg uppercase tracking-widest shrink-0">
-              Yayinlar & Klinik Literatur
+              Yayınlar & Klinik Literatür
             </h1>
             <div className="h-px flex-1 bg-white/10" />
           </div>
@@ -59,8 +59,7 @@ export function ArticlesClient({ content: c }: { content: SiteContent }) {
                       {a.category}
                     </span>
                     <span className="text-[10px] text-fg-muted">
-                      {a.date ? `${a.date} · ` : ""}
-                      {a.readTime}
+                      {a.date} &middot; {a.readTime}
                     </span>
                   </div>
                   <h3 className="text-base font-extrabold text-fg tracking-wide">
@@ -72,7 +71,7 @@ export function ArticlesClient({ content: c }: { content: SiteContent }) {
                   disabled
                   className="rounded-none text-[9px] font-bold uppercase tracking-widest shrink-0 border border-white/20 bg-transparent text-fg px-4 py-2.5 opacity-60 cursor-not-allowed"
                 >
-                  PDF Indir
+                  PDF İndir
                 </button>
               </div>
             ))}

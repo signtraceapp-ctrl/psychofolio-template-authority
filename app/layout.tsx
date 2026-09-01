@@ -20,12 +20,12 @@ export function generateMetadata(): Metadata {
 }
 
 const navLinks = [
-  { href: "/hakkimda", label: "Hakkimda" },
+  { href: "/hakkimda", label: "Hakkımda" },
   { href: "/hizmetler", label: "Hizmetler" },
-  { href: "/yaklasim", label: "Yaklasim" },
-  { href: "/yazilar", label: "Yazilar" },
+  { href: "/yaklasim", label: "Yaklaşım" },
+  { href: "/yazilar", label: "Yazılar" },
   { href: "/sss", label: "SSS" },
-  { href: "/iletisim", label: "Iletisim" },
+  { href: "/iletisim", label: "İletişim" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

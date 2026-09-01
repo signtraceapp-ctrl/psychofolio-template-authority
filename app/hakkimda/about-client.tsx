@@ -10,12 +10,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const organizations = [
-  "Turk Psikologlar Dernegi",
-  "Kognitif ve Davranis Terapileri Dernegi",
-  "EMDR Turkiye Dernegi",
-];
-
 export function AboutClient({ content: c }: { content: SiteContent }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -58,17 +52,18 @@ export function AboutClient({ content: c }: { content: SiteContent }) {
                 {c.site.name}
               </h2>
               <div className="text-sm text-fg-muted space-y-6 leading-relaxed font-light">
-                <p>{c.about.intro}</p>
+                {c.about.intro.split("\n\n").map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
 
               {/* Glassmorphic callout */}
               <div className="p-6 rounded-xl border border-white/15 bg-white/[0.02] backdrop-blur-md">
                 <h4 className="text-xs font-bold text-fg uppercase tracking-wider mb-2">
-                  Uygulanan Yaklasimlar
+                  {c.about.calloutTitle}
                 </h4>
                 <p className="text-xs text-fg-muted font-light leading-relaxed">
-                  Tum psikolojik degerlendirmeler ve klinik seanslar, etik
-                  standartlara uygun olarak yurutulur.
+                  {c.about.calloutText}
                 </p>
               </div>
             </div>
@@ -77,7 +72,7 @@ export function AboutClient({ content: c }: { content: SiteContent }) {
             <div className="lg:col-span-5 space-y-8">
               <div className="rounded-xl border border-white/10 bg-white/[0.02] p-6">
                 <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary border-b border-white/10 pb-3 mb-4">
-                  Egitim Gecmisi
+                  Eğitim Geçmişi
                 </h3>
                 <div className="space-y-4">
                   {c.about.credentials.map((cred, i) => (
@@ -87,8 +82,7 @@ export function AboutClient({ content: c }: { content: SiteContent }) {
                     >
                       <p className="text-xs font-bold text-fg">{cred.title}</p>
                       <p className="text-[10px] text-fg-muted mt-1">
-                        {cred.year !== "-" ? `${cred.year} · ` : ""}
-                        {cred.detail}
+                        {cred.year} &middot; {cred.detail}
                       </p>
                     </div>
                   ))}
@@ -100,10 +94,10 @@ export function AboutClient({ content: c }: { content: SiteContent }) {
                 className="rounded-xl border border-white/10 bg-white/[0.02] p-6"
               >
                 <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary border-b border-white/10 pb-3 mb-4">
-                  Mesleki Kuruluslar
+                  Mesleki Kuruluşlar
                 </h3>
                 <div className="space-y-3">
-                  {organizations.map((m, i) => (
+                  {c.about.organizations.map((m, i) => (
                     <div
                       key={i}
                       className="flex items-center gap-3 py-1 text-xs font-medium text-fg"

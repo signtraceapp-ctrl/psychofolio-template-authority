@@ -54,27 +54,35 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
                   Klinik Adresi
                 </h3>
-                <p className="text-xs text-fg-muted leading-relaxed font-light">
-                  {c.site.address}
+                <p className="text-xs text-fg-muted leading-relaxed font-light whitespace-pre-line">
+                  {c.contact.clinicAddress}
                 </p>
               </div>
 
               <div>
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
-                  Iletisim
+                  Çalışma Saatleri
                 </h3>
-                <p className="text-xs text-fg-muted mt-1">{c.site.email}</p>
+                <div className="text-xs font-semibold text-fg space-y-1.5">
+                  <p>{c.contact.workingHours.weekdays}</p>
+                  <p>{c.contact.workingHours.saturday}</p>
+                  <p className="text-fg-muted font-normal">{c.contact.workingHours.sunday}</p>
+                </div>
               </div>
 
-              <p className="text-xs text-fg-muted/60 font-light leading-relaxed">
-                {c.contact.intro}
-              </p>
+              <div>
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
+                  İletişim
+                </h3>
+                <p className="text-xs font-bold text-fg">{c.site.phone}</p>
+                <p className="text-xs text-fg-muted mt-1">{c.site.email}</p>
+              </div>
             </div>
 
             {/* Form */}
             <div className="lg:col-span-8 bg-white/[0.02] p-8 space-y-6">
               <h3 className="text-sm font-bold text-fg uppercase tracking-widest border-b border-white/5 pb-3">
-                Resmi Seans Talep Formu
+                {c.contact.formTitle}
               </h3>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -92,6 +100,13 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
                 />
               </div>
 
+              <input
+                type="text"
+                placeholder={c.contact.formReason}
+                disabled
+                className="w-full rounded-md border border-white/10 bg-black/35 px-4 py-3.5 text-xs text-fg placeholder:text-fg-muted/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+
               <textarea
                 placeholder={c.contact.formMessage}
                 rows={4}
@@ -108,8 +123,8 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
               </button>
 
               <p className="text-center text-[10px] text-fg-muted/50">
-                Ornek sitede form calismaz. Satin aldiginizda kendi e-posta
-                adresinize baglanir.
+                Örnek sitede form çalışmaz. Satın aldığınızda kendi e-posta
+                adresinize bağlanır.
               </p>
             </div>
           </div>

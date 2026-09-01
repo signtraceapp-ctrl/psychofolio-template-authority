@@ -1,0 +1,208 @@
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
+import { z } from "zod";
+
+// ── Zod schema (all optional — validates buyer overrides in content.json) ──
+
+const metin = z.string().max(5000);
+
+const siteContentInputSchema = z.object({
+  site: z
+    .object({
+      name: metin,
+      title: metin,
+      email: metin,
+      address: metin,
+      copyright: metin,
+    })
+    .partial()
+    .optional(),
+
+  home: z
+    .object({
+      badge: metin,
+      headline: metin,
+      headlineAccent: metin,
+      headlineSuffix: metin,
+      description: metin,
+      cta: metin,
+      credentials: z.array(z.object({ label: metin, value: metin })),
+    })
+    .partial()
+    .optional(),
+
+  services: z
+    .array(
+      z.object({ title: metin, desc: metin, duration: metin, method: metin }),
+    )
+    .optional(),
+
+  about: z
+    .object({
+      title: metin,
+      intro: metin,
+      credentials: z.array(
+        z.object({ year: metin, title: metin, detail: metin }),
+      ),
+    })
+    .partial()
+    .optional(),
+
+  approach: z
+    .object({
+      title: metin,
+      intro: metin,
+      principles: z.array(z.object({ title: metin, desc: metin })),
+    })
+    .partial()
+    .optional(),
+
+  articles: z
+    .array(
+      z.object({
+        title: metin,
+        category: metin,
+        readTime: metin,
+        date: metin,
+      }),
+    )
+    .optional(),
+
+  faq: z.array(z.object({ q: metin, a: metin })).optional(),
+
+  contact: z
+    .object({
+      title: metin,
+      intro: metin,
+      formName: metin,
+      formEmail: metin,
+      formMessage: metin,
+      formSubmit: metin,
+    })
+    .partial()
+    .optional(),
+});
+
+// ── Resolved type (what pages consume — everything required) ──
+
+export interface SiteContent {
+  site: {
+    name: string;
+    title: string;
+    email: string;
+    address: string;
+    copyright: string;
+  };
+  home: {
+    badge: string;
+    headline: string;
+    headlineAccent: string;
+    headlineSuffix: string;
+    description: string;
+    cta: string;
+    credentials: { label: string; value: string }[];
+  };
+  services: {
+    title: string;
+    desc: string;
+    duration: string;
+    method: string;
+  }[];
+  about: {
+    title: string;
+    intro: string;
+    credentials: { year: string; title: string; detail: string }[];
+  };
+  approach: {
+    title: string;
+    intro: string;
+    principles: { title: string; desc: string }[];
+  };
+  articles: {
+    title: string;
+    category: string;
+    readTime: string;
+    date: string;
+  }[];
+  faq: { q: string; a: string }[];
+  contact: {
+    title: string;
+    intro: string;
+    formName: string;
+    formEmail: string;
+    formMessage: string;
+    formSubmit: string;
+  };
+}
+
+// ── Merge helper (same pattern as serene) ──
+
+function birlestir<T extends Record<string, unknown>>(
+  varsayilan: T,
+  gelen?: Partial<T>,
+): T {
+  if (!gelen) return varsayilan;
+  const cikti = { ...varsayilan };
+  for (const [k, v] of Object.entries(gelen)) {
+    if (v === undefined || v === null) continue;
+    if (typeof v === "string" && v.trim() === "") continue;
+    if (Array.isArray(v) && v.length === 0) continue;
+    (cikti as Record<string, unknown>)[k] = v;
+  }
+  return cikti;
+}
+
+// ── Content loader ──
+
+let cached: SiteContent | null = null;
+
+export function getContent(): SiteContent {
+  if (cached) return cached;
+
+  // Defaults: site.json (always present, ships with the template)
+  const defaultsPath = join(process.cwd(), "content", "site.json");
+  const defaults: SiteContent = JSON.parse(
+    readFileSync(defaultsPath, "utf-8"),
+  );
+
+  // Buyer overrides: content.json (empty {} by default, buyer fills what they want)
+  const overridesPath = join(process.cwd(), "content", "content.json");
+  if (existsSync(overridesPath)) {
+    try {
+      const raw = JSON.parse(readFileSync(overridesPath, "utf-8"));
+      const parsed = siteContentInputSchema.safeParse(raw);
+
+      if (parsed.success && Object.keys(parsed.data).length > 0) {
+        const g = parsed.data;
+        cached = {
+          site: birlestir(defaults.site, g.site),
+          home: birlestir(defaults.home, g.home),
+          services:
+            g.services && g.services.length > 0
+              ? (g.services as SiteContent["services"])
+              : defaults.services,
+          about: birlestir(defaults.about, g.about),
+          approach: birlestir(defaults.approach, g.approach),
+          articles:
+            g.articles && g.articles.length > 0
+              ? (g.articles as SiteContent["articles"])
+              : defaults.articles,
+          faq:
+            g.faq && g.faq.length > 0
+              ? (g.faq as SiteContent["faq"])
+              : defaults.faq,
+          contact: birlestir(defaults.contact, g.contact),
+        };
+        return cached;
+      }
+    } catch (e) {
+      console.error(
+        "[content] content.json gecersiz, varsayilanlar kullaniliyor:",
+        e,
+      );
+    }
+  }
+
+  cached = defaults;
+  return cached;
+}

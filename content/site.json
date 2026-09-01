@@ -1,0 +1,89 @@
+{
+  "site": {
+    "name": "Uzm. Psk. Deniz Örnek",
+    "title": "Uzman Klinik Psikolog",
+    "email": "ornek@psychofolio.com",
+    "address": "İstanbul, Türkiye",
+    "copyright": "Tüm hakları saklıdır."
+  },
+  "home": {
+    "badge": "AUTHORITY",
+    "headline": "Yapılandırılmış, kanıta dayalı",
+    "headlineAccent": "psikolojik danışmanlık",
+    "headlineSuffix": "hizmeti.",
+    "description": "Kurumsal psikoloji, travma sonrası destek ve dayanıklılık programları alanında uzmanlaşmış, yapılandırılmış terapi süreçlerini yönetiyorum.",
+    "cta": "İletişime Geçin",
+    "credentials": [
+      { "label": "Uzmanlık Alanı", "value": "Kurumsal Psikoloji" },
+      { "label": "Yaklaşım", "value": "Kanıta Dayalı" },
+      { "label": "Format", "value": "Yüzyüze / Çevrimiçi" }
+    ]
+  },
+  "services": [
+    {
+      "title": "Kurumsal Psikolojik Danışmanlık",
+      "desc": "Kurumlara yönelik çalışanların ruh sağlığı, tükenmişlik önleme ve psikososyal risk değerlendirmesi hizmetleri.",
+      "duration": "60 dk",
+      "method": "Yüzyüze / Çevrimiçi"
+    },
+    {
+      "title": "Travma Sonrası Destek",
+      "desc": "İş kazası, organizasyonel kriz veya bireysel travmatik deneyimler sonrası yapılandırılmış psikolojik destek süreci.",
+      "duration": "50 dk",
+      "method": "Yüzyüze / Çevrimiçi"
+    },
+    {
+      "title": "Dayanıklılık Programları",
+      "desc": "Bireylerin ve ekiplerin stres yönetimi, duygusal dayanıklılık ve adaptasyon kapasitesini güçlendiren yapılandırılmış programlar.",
+      "duration": "90 dk",
+      "method": "Yüzyüze"
+    },
+    {
+      "title": "Bireysel Psikoterapi",
+      "desc": "Kaygı, depresyon, tükenmişlik ve ilişkisel zorluklarda bilimsel temelli birebir terapi süreci.",
+      "duration": "50 dk",
+      "method": "Yüzyüze / Çevrimiçi"
+    }
+  ],
+  "about": {
+    "title": "Hakkımda",
+    "intro": "Kurumsal psikoloji ve travma sonrası destek alanlarında çalışıyorum. Danışanlarıma yapılandırılmış, kanıta dayalı terapötik süreçlerle eşlik ediyorum. Çalışmalarımda bilimsel literatür ve güncel araştırma bulgularını temel alıyorum.",
+    "credentials": [
+      { "year": "-", "title": "Lisans Eğitimi", "detail": "Psikoloji alanında lisans derecesi" },
+      { "year": "-", "title": "Yüksek Lisans", "detail": "Klinik psikoloji alanında uzmanlık" },
+      { "year": "-", "title": "Kurumsal Danışmanlık Deneyimi", "detail": "Çeşitli kurumlarda çalışan ruh sağlığı ve organizasyonel iyilik programları" },
+      { "year": "-", "title": "Sürdürülen Eğitim", "detail": "Travma odaklı terapiler ve dayanıklılık müdahaleleri alanında sürekli mesleki gelişim" }
+    ]
+  },
+  "approach": {
+    "title": "Çalışma Yaklaşımım",
+    "intro": "Terapi sürecimi bilimsel kanıt, yapılandırılmış metodoloji ve ölçülebilir hedefler üzerine kuruyorum. Her danışan için bireyselleştirilmiş bir yol haritası oluşturuyorum.",
+    "principles": [
+      { "title": "Kanıta Dayalı Yöntemler", "desc": "Bilimsel araştırmalarla etkililiği kanıtlanmış terapi yaklaşımlarını temel alıyorum. Her müdahale, güncel literatür ve klinik kılavuzlarla desteklenir." },
+      { "title": "Yapılandırılmış Süreç", "desc": "Net hedefler, ölçülebilir ilerleme kriterleri ve düzenli değerlendirmelerle şeffaf bir terapi süreci yönetiyorum." },
+      { "title": "Bütünsel Değerlendirme", "desc": "Bireyin iş yaşamı, ilişkileri ve kişisel tarihini bir bütün olarak ele alıyorum. Belirtiyi değil, sistemi anlama esasına dayanır." },
+      { "title": "Etik ve Gizlilik", "desc": "Tüm çalışmalarım meslek etiği ve yasal çerçevede yürütülür. Danışan bilgileri kesinlikle gizli tutulur." }
+    ]
+  },
+  "articles": [
+    { "title": "İş Yerinde Ruh Sağlığı: Kurumsal Sorumluluk ve Bireysel Farkındalık", "category": "Kurumsal", "readTime": "9 dk", "date": "Örnek tarih" },
+    { "title": "Travma Sonrası Büyüme: Zorluktan Güce Geçiş Süreci", "category": "Travma", "readTime": "11 dk", "date": "Örnek tarih" },
+    { "title": "Organizasyonel Dayanıklılık: Ekipleri Krize Hazırlamak", "category": "Dayanıklılık", "readTime": "8 dk", "date": "Örnek tarih" },
+    { "title": "Tükenmişlik Sendromu: Erken Belirtiler ve Müdahale Stratejileri", "category": "Tükenmişlik", "readTime": "7 dk", "date": "Örnek tarih" }
+  ],
+  "faq": [
+    { "q": "Kurumsal danışmanlık süreci nasıl işliyor?", "a": "Öncelikle kurumun ihtiyaçlarını belirlemek için bir ön değerlendirme görüşmesi yapılır. Ardından hedefe yönelik yapılandırılmış bir program tasarlanır." },
+    { "q": "Bireysel terapi ile kurumsal danışmanlık arasındaki fark nedir?", "a": "Bireysel terapide odak bireyin iç dünyası ve kişisel hedefleridir. Kurumsal danışmanlıkta ise çalışan iyiliği, ekip dinamikleri ve organizasyonel süreçler ele alınır." },
+    { "q": "Travma sonrası destek ne zaman başvurulmalı?", "a": "Travmatik bir deneyimin ardından uyku bozuklukları, aşırı uyarılmışlık veya kaçma davranışları gibi belirtiler yaşanıyorsa profesyonel destek önemlidir." },
+    { "q": "Seans ücreti ne kadar?", "a": "Seans bilgisi için iletişime geçin." },
+    { "q": "Çevrimiçi seanslar yüzyüze seanslar kadar etkili mi?", "a": "Araştırmalar, birçok terapi yaklaşımında çevrimiçi seansların yüzyüze seanslarla benzer etkililik gösterdiğini ortaya koymaktadır." }
+  ],
+  "contact": {
+    "title": "İletişim",
+    "intro": "Kurumsal danışmanlık, bireysel terapi veya dayanıklılık programları hakkında bilgi almak için iletişime geçebilirsiniz.",
+    "formName": "Adınız",
+    "formEmail": "E-posta",
+    "formMessage": "Mesajınız",
+    "formSubmit": "Gönder"
+  }
+}

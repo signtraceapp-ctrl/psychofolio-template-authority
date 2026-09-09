@@ -84,7 +84,7 @@ export function HomeClient({ content: c }: { content: SiteContent }) {
                   {c.home.cta}
                 </a>
                 <a
-                  href="/yazilar"
+                  href="/hakkimda"
                   className="inline-flex items-center gap-2 rounded-none px-8 py-3.5 text-xs font-bold uppercase tracking-wider border border-white/20 hover:border-primary/50 text-fg hover:bg-white/5 transition-all duration-300"
                 >
                   {c.home.ctaSecondary}

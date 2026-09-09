@@ -105,6 +105,18 @@ const siteContentInputSchema = z.object({
 
 // ── Resolved type (what pages consume — everything required) ──
 
+export interface SeoData {
+  jobTitle: string;
+  description: string;
+  specialties: string[];
+  credentials: string[];
+  location: string;
+  socialLinks: string[];
+  alumniOf?: string[];
+  openingHours?: string;
+  siteUrl?: string;
+}
+
 export interface SiteContent {
   site: {
     name: string;
@@ -189,6 +201,7 @@ function birlestir<T extends Record<string, unknown>>(
     (cikti as Record<string, unknown>)[k] = v;
   }
   return cikti;
+  seo?: SeoData;
 }
 
 // ── Content loader ──

@@ -105,9 +105,9 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-2">
                     <Mail className="h-6 w-6" />
                   </div>
-                  <h3 className="text-base font-bold text-fg">Mesajiniz Hazirlandi</h3>
+                  <h3 className="text-base font-bold text-fg">Mesajınız Hazırlandı</h3>
                   <p className="text-xs text-fg-muted font-light">
-                    E-posta uygulamaniz acildi. Gonderdikten sonra en kisa surede donus yapilacaktir.
+                    E-posta uygulamanız açıldı. Gönderdikten sonra en kısa sürede dönüş yapılacaktır.
                   </p>
                   <button
                     type="button"

@@ -12,6 +12,7 @@ const siteContentInputSchema = z.object({
       name: metin,
       title: metin,
       email: metin,
+      phone: metin,
       address: metin,
       copyright: metin,
     })
@@ -26,9 +27,14 @@ const siteContentInputSchema = z.object({
       headlineSuffix: metin,
       description: metin,
       cta: metin,
+      ctaSecondary: metin,
       credentials: z.array(z.object({ label: metin, value: metin })),
     })
     .partial()
+    .optional(),
+
+  metrics: z
+    .array(z.object({ val: metin, unit: metin, label: metin }))
     .optional(),
 
   services: z
@@ -41,9 +47,12 @@ const siteContentInputSchema = z.object({
     .object({
       title: metin,
       intro: metin,
+      calloutTitle: metin,
+      calloutText: metin,
       credentials: z.array(
         z.object({ year: metin, title: metin, detail: metin }),
       ),
+      organizations: z.array(metin),
     })
     .partial()
     .optional(),
@@ -52,6 +61,9 @@ const siteContentInputSchema = z.object({
     .object({
       title: metin,
       intro: metin,
+      methods: z.array(
+        z.object({ title: metin, full: metin, desc: metin }),
+      ),
       principles: z.array(z.object({ title: metin, desc: metin })),
     })
     .partial()
@@ -74,8 +86,16 @@ const siteContentInputSchema = z.object({
     .object({
       title: metin,
       intro: metin,
+      clinicAddress: metin,
+      workingHours: z.object({
+        weekdays: metin,
+        saturday: metin,
+        sunday: metin,
+      }),
+      formTitle: metin,
       formName: metin,
       formEmail: metin,
+      formReason: metin,
       formMessage: metin,
       formSubmit: metin,
     })
@@ -90,6 +110,7 @@ export interface SiteContent {
     name: string;
     title: string;
     email: string;
+    phone: string;
     address: string;
     copyright: string;
   };
@@ -100,8 +121,14 @@ export interface SiteContent {
     headlineSuffix: string;
     description: string;
     cta: string;
+    ctaSecondary: string;
     credentials: { label: string; value: string }[];
   };
+  metrics: {
+    val: string;
+    unit: string;
+    label: string;
+  }[];
   services: {
     title: string;
     desc: string;
@@ -111,11 +138,15 @@ export interface SiteContent {
   about: {
     title: string;
     intro: string;
+    calloutTitle: string;
+    calloutText: string;
     credentials: { year: string; title: string; detail: string }[];
+    organizations: string[];
   };
   approach: {
     title: string;
     intro: string;
+    methods: { title: string; full: string; desc: string }[];
     principles: { title: string; desc: string }[];
   };
   articles: {
@@ -128,14 +159,22 @@ export interface SiteContent {
   contact: {
     title: string;
     intro: string;
+    clinicAddress: string;
+    workingHours: {
+      weekdays: string;
+      saturday: string;
+      sunday: string;
+    };
+    formTitle: string;
     formName: string;
     formEmail: string;
+    formReason: string;
     formMessage: string;
     formSubmit: string;
   };
 }
 
-// ── Merge helper (same pattern as serene) ──
+// ── Merge helper ──
 
 function birlestir<T extends Record<string, unknown>>(
   varsayilan: T,
@@ -177,6 +216,10 @@ export function getContent(): SiteContent {
         cached = {
           site: birlestir(defaults.site, g.site),
           home: birlestir(defaults.home, g.home),
+          metrics:
+            g.metrics && g.metrics.length > 0
+              ? (g.metrics as SiteContent["metrics"])
+              : defaults.metrics,
           services:
             g.services && g.services.length > 0
               ? (g.services as SiteContent["services"])

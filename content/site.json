@@ -8,25 +8,53 @@
     "copyright": "Tüm hakları saklıdır."
   },
   "home": {
-    "badge": "BİLİMSEL & KANITA DAYALI KLİNİK METOTLAR",
-    "headline": "Kanıta Dayalı",
-    "headlineAccent": "Klinik Yaklaşım",
+    "badge": "Kanıta dayalı klinik psikoloji",
+    "headline": "Yapılandırılmış terapi,",
+    "headlineAccent": "ölçülebilir ilerleme.",
     "headlineSuffix": "",
-    "description": "Uluslararası standartlarda yapılandırılmış CBT (Bilişsel Davranışçı Terapi), EMDR ve Şema Terapi protokolleriyle ölçülebilir ve bilimsel ruh sağlığı çözümleri.",
-    "cta": "İletişim & Randevu",
-    "ctaSecondary": "Yayınlar",
+    "description": "Uluslararası standartlarda yapılandırılmış Bilişsel Davranışçı Terapi, EMDR ve Şema Terapi protokolleriyle ölçülebilir hedeflere dayanan bir terapi süreci.",
+    "cta": "Randevu talebi oluştur",
+    "ctaSecondary": "Klinik profil",
     "credentials": [
-      { "label": "TPD ÜYELİĞİ", "value": "" },
-      { "label": "KDTD AKREDİTASYONU", "value": "" },
-      { "label": "EMDR EUROPE ONAYI", "value": "" },
-      { "label": "ISST SERTİFİKASI", "value": "" }
+      {
+        "label": "Türk Psikologlar Derneği üyesi",
+        "value": ""
+      },
+      {
+        "label": "KDTD akreditasyonu",
+        "value": ""
+      },
+      {
+        "label": "EMDR Europe onaylı uygulayıcı",
+        "value": ""
+      },
+      {
+        "label": "ISST sertifikası",
+        "value": ""
+      }
     ]
   },
   "metrics": [
-    { "val": "12+", "unit": "Yıl", "label": "Klinik Deneyim" },
-    { "val": "4500+", "unit": "", "label": "Tamamlanmış Seans" },
-    { "val": "8", "unit": "+", "label": "Akademik Yayın" },
-    { "val": "%100", "unit": "", "label": "Etik Taahhüt" }
+    {
+      "val": "12+",
+      "unit": "Yıl",
+      "label": "Klinik Deneyim"
+    },
+    {
+      "val": "4500+",
+      "unit": "",
+      "label": "Tamamlanmış Seans"
+    },
+    {
+      "val": "8",
+      "unit": "+",
+      "label": "Akademik Yayın"
+    },
+    {
+      "val": "%100",
+      "unit": "",
+      "label": "Etik Taahhüt"
+    }
   ],
   "services": [
     {
@@ -77,7 +105,7 @@
     ]
   },
   "approach": {
-    "title": "Klinik Metotlar & Bilimsel Çerçeve",
+    "title": "Klinik yöntemler ve bilimsel çerçeve",
     "intro": "",
     "methods": [
       {
@@ -141,11 +169,11 @@
       "saturday": "Cmt: 10:00 - 15:00",
       "sunday": "Pazar: Kapalı"
     },
-    "formTitle": "Resmi Seans Talep Formu",
+    "formTitle": "Randevu talep formu",
     "formName": "Ad ve Soyad",
     "formEmail": "E-posta",
     "formReason": "Başvuru Nedeni",
-    "formMessage": "Ek notlar...",
-    "formSubmit": "Seans Talebini İlet"
+    "formMessage": "Kısaca paylaşmak istedikleriniz (isteğe bağlı)",
+    "formSubmit": "Talebi gönder"
   }
 }

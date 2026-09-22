@@ -1,18 +1,19 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Mail } from "lucide-react";
+import { useState } from "react";
+import { CircleCheck, Clock, ExternalLink, LifeBuoy, Mail, MapPin, Phone } from "lucide-react";
 import type { SiteContent } from "@/lib/content";
+import { Container, PageHeader, Reveal, telHref } from "@/components/clinic-ui";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const inputClass =
+  "w-full rounded-lg border border-border-strong bg-bg px-4 py-3 text-[15px] text-fg placeholder:text-fg-muted/70 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
 
 export function ContactClient({ content: c }: { content: SiteContent }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [sent, setSent] = useState(false);
+  const hours = c.contact.workingHours;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    c.contact.clinicAddress.replace(/\n/g, ", "),
+  )}`;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,146 +28,165 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
     setSent(true);
   };
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.from(el, {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%", once: true },
-        });
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={containerRef}
-      className="py-24 bg-bg text-fg relative overflow-hidden"
-    >
-      <div className="authority-grid absolute inset-0 pointer-events-none -z-10" />
+    <div>
+      <PageHeader crumb="İletişim" title={c.contact.title} intro={c.contact.intro} />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="flex items-center gap-4 mb-12">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-fg uppercase tracking-widest shrink-0">
-              {c.contact.title}
-            </h1>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-
-          <div
-            data-reveal
-            className="grid gap-0 lg:grid-cols-12 border border-white/10 rounded-xl overflow-hidden backdrop-blur-md bg-white/[0.01]"
-          >
-            {/* Sidebar info */}
-            <div className="lg:col-span-4 bg-white/[0.01] p-8 space-y-8 border-b lg:border-b-0 lg:border-r border-white/10">
-              <div>
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
-                  Klinik Adresi
-                </h3>
-                <p className="text-xs text-fg-muted leading-relaxed font-light whitespace-pre-line">
-                  {c.contact.clinicAddress}
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
-                  Çalışma Saatleri
-                </h3>
-                <div className="text-xs font-semibold text-fg space-y-1.5">
-                  <p>{c.contact.workingHours.weekdays}</p>
-                  <p>{c.contact.workingHours.saturday}</p>
-                  <p className="text-fg-muted font-normal">{c.contact.workingHours.sunday}</p>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary mb-3">
-                  İletişim
-                </h3>
-                <p className="text-xs font-bold text-fg">{c.site.phone}</p>
-                <p className="text-xs text-fg-muted mt-1">{c.site.email}</p>
-              </div>
-            </div>
-
-            {/* Form */}
-            <div className="lg:col-span-8 bg-white/[0.02] p-8 space-y-6">
-              <h3 className="text-sm font-bold text-fg uppercase tracking-widest border-b border-white/5 pb-3">
-                {c.contact.formTitle}
-              </h3>
+      <section className="py-16 sm:py-20">
+        <Container className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Form */}
+          <Reveal className="lg:col-span-7">
+            <div className="rounded-xl border border-border bg-bg p-7 shadow-[0_1px_2px_rgba(22,35,43,0.04)] sm:p-9">
+              <h2 className="text-xl font-semibold text-fg">{c.contact.formTitle}</h2>
 
               {sent ? (
-                <div className="text-center space-y-4 py-8">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-2">
-                    <Mail className="h-6 w-6" />
+                <div className="mt-8 flex gap-4 rounded-lg bg-accent p-6" role="status">
+                  <CircleCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="font-semibold text-fg">E-posta uygulamanız açıldı</p>
+                    <p className="mt-1 text-[15px] leading-relaxed text-fg-muted">
+                      Mesajınız hazır; göndermek için e-posta uygulamanızda &ldquo;Gönder&rdquo;e basmanız yeterli.
+                      Uygulama açılmadıysa doğrudan{" "}
+                      <a href={`mailto:${c.site.email}`} className="font-medium text-primary underline">
+                        {c.site.email}
+                      </a>{" "}
+                      adresine yazabilirsiniz.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setSent(false)}
+                      className="mt-4 text-[14px] font-medium text-primary hover:underline"
+                    >
+                      Formu yeniden doldur
+                    </button>
                   </div>
-                  <h3 className="text-base font-bold text-fg">Mesajınız Hazırlandı</h3>
-                  <p className="text-xs text-fg-muted font-light">
-                    E-posta uygulamanız açıldı. Gönderdikten sonra en kısa sürede dönüş yapılacaktır.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setSent(false)}
-                    className="inline-flex items-center justify-center rounded-none px-10 py-3 text-xs font-bold uppercase tracking-widest bg-primary text-primary-fg hover:opacity-90 transition-opacity"
-                  >
-                    Yeni Mesaj
-                  </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <input
-                      id="ad"
-                      name="ad"
-                      type="text"
-                      required
-                      placeholder={c.contact.formName}
-                      className="w-full rounded-md border border-white/10 bg-black/35 px-4 py-3.5 text-xs text-fg placeholder:text-fg-muted/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-300"
-                    />
-                    <input
-                      id="eposta"
-                      name="eposta"
-                      type="email"
-                      required
-                      placeholder={c.contact.formEmail}
-                      className="w-full rounded-md border border-white/10 bg-black/35 px-4 py-3.5 text-xs text-fg placeholder:text-fg-muted/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-300"
+                <form onSubmit={handleSubmit} className="mt-7 space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="ad" className="mb-2 block text-[14px] font-medium text-fg">
+                        {c.contact.formName}
+                      </label>
+                      <input id="ad" name="ad" type="text" required autoComplete="name" className={inputClass} />
+                    </div>
+                    <div>
+                      <label htmlFor="eposta" className="mb-2 block text-[14px] font-medium text-fg">
+                        {c.contact.formEmail}
+                      </label>
+                      <input
+                        id="eposta"
+                        name="eposta"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        className={inputClass}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="konu" className="mb-2 block text-[14px] font-medium text-fg">
+                      {c.contact.formReason}
+                    </label>
+                    <input id="konu" name="konu" type="text" className={inputClass} />
+                  </div>
+                  <div>
+                    <label htmlFor="mesaj" className="mb-2 block text-[14px] font-medium text-fg">
+                      Mesajınız
+                    </label>
+                    <textarea
+                      id="mesaj"
+                      name="mesaj"
+                      rows={5}
+                      placeholder={c.contact.formMessage}
+                      className={`${inputClass} resize-y`}
                     />
                   </div>
-
-                  <input
-                    id="konu"
-                    name="konu"
-                    type="text"
-                    placeholder={c.contact.formReason}
-                    className="w-full rounded-md border border-white/10 bg-black/35 px-4 py-3.5 text-xs text-fg placeholder:text-fg-muted/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-300"
-                  />
-
-                  <textarea
-                    id="mesaj"
-                    name="mesaj"
-                    required
-                    placeholder={c.contact.formMessage}
-                    rows={4}
-                    className="w-full rounded-md border border-white/10 bg-black/35 px-4 py-3.5 text-xs text-fg placeholder:text-fg-muted/40 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none transition-all duration-300"
-                  />
-
+                  <label className="flex items-start gap-3 text-[14px] leading-relaxed text-fg-muted">
+                    <input
+                      type="checkbox"
+                      required
+                      className="mt-1 h-4 w-4 shrink-0 rounded border-border-strong accent-[#0e5a66]"
+                    />
+                    Paylaştığım bilgilerin yalnızca randevu planlaması amacıyla kullanılmasını kabul ediyorum.
+                  </label>
                   <button
                     type="submit"
-                    className="w-full rounded-none text-xs font-bold uppercase tracking-widest py-4 bg-primary text-primary-fg hover:opacity-90 transition-opacity"
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-[15px] font-medium text-primary-fg transition-colors hover:bg-primary-hover sm:w-auto"
                   >
                     {c.contact.formSubmit}
                   </button>
                 </form>
               )}
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </Reveal>
+
+          {/* Bilgiler */}
+          <Reveal delay={0.08} className="space-y-5 lg:col-span-5">
+            <div className="rounded-xl border border-border bg-bg p-7">
+              <div className="flex gap-4">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <div>
+                  <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-fg-muted">Klinik adresi</p>
+                  <p className="mt-2 whitespace-pre-line text-[15px] leading-relaxed text-fg">
+                    {c.contact.clinicAddress}
+                  </p>
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-primary hover:underline"
+                  >
+                    Haritada görüntüle
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border bg-bg p-7">
+              <div className="flex gap-4">
+                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <div>
+                  <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-fg-muted">
+                    Çalışma saatleri
+                  </p>
+                  <div className="mt-2 space-y-1 text-[15px] text-fg">
+                    <p>{hours.weekdays}</p>
+                    <p>{hours.saturday}</p>
+                    <p className="text-fg-muted">{hours.sunday}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border bg-bg p-7">
+              <ul className="space-y-4 text-[15px]">
+                <li className="flex items-center gap-4">
+                  <Phone className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <a href={telHref(c.site.phone)} className="text-fg hover:text-primary">
+                    {c.site.phone}
+                  </a>
+                </li>
+                <li className="flex items-center gap-4">
+                  <Mail className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <a href={`mailto:${c.site.email}`} className="break-all text-fg hover:text-primary">
+                    {c.site.email}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex gap-4 rounded-xl bg-accent p-6">
+              <LifeBuoy className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+              <p className="text-[14px] leading-relaxed text-fg">
+                <span className="font-semibold">Acil durumlar:</span> Bu form acil destek kanalı değildir.
+                Kendinizi ya da bir başkasını tehlikede hissediyorsanız 112&apos;yi arayın.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+    </div>
   );
 }

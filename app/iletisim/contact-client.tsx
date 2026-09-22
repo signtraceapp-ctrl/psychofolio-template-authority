@@ -11,9 +11,11 @@ const inputClass =
 export function ContactClient({ content: c }: { content: SiteContent }) {
   const [sent, setSent] = useState(false);
   const hours = c.contact.workingHours;
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    c.contact.clinicAddress.replace(/\n/g, ", "),
-  )}`;
+  // Use clinicAddress if set, fall back to site.address
+  const address = c.contact.clinicAddress || c.site.address;
+  const mapsUrl = address
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address.replace(/\n/g, ", "))}`
+    : "";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -129,17 +131,19 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
                 <div>
                   <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-fg-muted">Klinik adresi</p>
                   <p className="mt-2 whitespace-pre-line text-[15px] leading-relaxed text-fg">
-                    {c.contact.clinicAddress}
+                    {address}
                   </p>
-                  <a
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-primary hover:underline"
-                  >
-                    Haritada görüntüle
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                  </a>
+                  {mapsUrl && (
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-primary hover:underline"
+                    >
+                      Haritada görüntüle
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -152,9 +156,17 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
                     Çalışma saatleri
                   </p>
                   <div className="mt-2 space-y-1 text-[15px] text-fg">
-                    <p>{hours.weekdays}</p>
-                    <p>{hours.saturday}</p>
-                    <p className="text-fg-muted">{hours.sunday}</p>
+                    {typeof hours === "object" && hours ? (
+                      <>
+                        {hours.weekdays && <p>{hours.weekdays}</p>}
+                        {hours.saturday && <p>{hours.saturday}</p>}
+                        {hours.sunday && <p className="text-fg-muted">{hours.sunday}</p>}
+                      </>
+                    ) : typeof hours === "string" && hours ? (
+                      <p>{hours}</p>
+                    ) : (
+                      <p className="text-fg-muted">Bilgi girilmemiş</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -162,12 +174,14 @@ export function ContactClient({ content: c }: { content: SiteContent }) {
 
             <div className="rounded-xl border border-border bg-bg p-7">
               <ul className="space-y-4 text-[15px]">
-                <li className="flex items-center gap-4">
-                  <Phone className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <a href={telHref(c.site.phone)} className="text-fg hover:text-primary">
-                    {c.site.phone}
-                  </a>
-                </li>
+                {c.site.phone && (
+                  <li className="flex items-center gap-4">
+                    <Phone className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                    <a href={telHref(c.site.phone)} className="text-fg hover:text-primary">
+                      {c.site.phone}
+                    </a>
+                  </li>
+                )}
                 <li className="flex items-center gap-4">
                   <Mail className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                   <a href={`mailto:${c.site.email}`} className="break-all text-fg hover:text-primary">
